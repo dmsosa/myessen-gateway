@@ -1,14 +1,5 @@
 spring:
-  cloud:
-    gateway:
-      routes:
-        - id: tools-route
-          uri: ${TOOLS_ROUTE_URI:http://localhost:8081}
-          predicates:
-            - Path=/tools/**
-          filters:
-            - PrefixPath=/api
-            - AddResponseHeader=X-Powered-By, Duvi Gateway Service
-server:
-  port:
-    8080
+  application:
+    name: myessen-gateway
+  config:
+    import: optional:configserver:http://localhost:8088
